@@ -1,0 +1,53 @@
+html, body {
+  padding: 0px;
+  margin: 0px;
+  font-size: 10px;
+}
+
+.drum-kit {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+  background: url('./background.jpg') center center;
+  background-size: cover;
+}
+
+.drum-keys {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.each-key {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 75px;
+  padding-bottom: 5px;
+  color: #fff;
+  background: rgb(0, 0, 0, 0.4);
+  border: .4rem solid #000;
+  border-radius: .5rem;
+  transition: all 0.07s ease;
+}
+
+kbd {
+  font-size: 4rem;
+}
+
+.each-key.playing {
+  transform: scale(1.1);
+  color: #fff;
+  border: .4rem solid #ffc600;
+}
+
+.sound {
+  color: #ffc600;
+  text-transform: uppercase;
+}
