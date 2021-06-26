@@ -1,0 +1,83 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  font-size: 10px;
+  font-family: 'helvetica neue';
+  overflow: hidden;
+}
+
+.panels {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.panel {
+  color: #fff;
+  font-size: 2rem;
+  height: 100vh;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: no-repeat center center;
+  background-size: cover;
+  transition: 
+    font-size 0.7s cubic-bezier(0.38,-0.11, 0.74, 0.99),
+    flex 0.7s cubic-bezier(0.38,-0.11, 0.74, 0.99),
+    background 0.2s;
+}
+
+.panel > * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  text-transform: uppercase;
+  font-family: 'Amatic SC', cursive;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
+  transition: transform 0.5s
+}
+
+.panel.open {
+  flex: 5;
+  font-size: 4.0rem;
+}
+
+.panel > *:first-child{
+  transform: translateY(-100%);
+}
+
+.panel.open-active > *:first-child{
+  transform: translateY(0);
+}
+
+.panel > *:last-child{
+  transform: translateY(100%);
+}
+
+.panel.open-active > *:last-child{
+  transform: translateY(0);
+}
+
+.panel-1 {
+  background-image: url('./dance.jpeg');
+}
+
+.panel-2 {
+  background-image: url('./give-take.jpeg');
+}
+
+.panel-3 {
+  background-image: url('./experience.jpeg');
+}
+
+.panel-4 {
+  background-image: url('./give-all.jpeg');
+}
+
+.panel-5 {
+  background-image: url('./life-motion.jpeg');
+}
