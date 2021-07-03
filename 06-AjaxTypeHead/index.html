@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajax Type Head</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <form class="search-form">
+    <input type="text" name="search" class="search" autocomplete="off" placeholder="Search any City or State">
+    <ul class="suggestions"></ul>
+  </form>
+  <script>
+    const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json'
+
+    const search = document.querySelector('input')
+    const dropdown = document.querySelector('.search-form ul')
+    const cities = []
+
+    fetch(endpoint)
+      .then( blob => blob.json() )
+      .then( data => cities.push(...data))
+
+      function numberWithCommas(num) {
+        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      }
+
+    function findMatches(keyword, cities) {
+      if(keyword == '') {
+        return []
+      }
+      const regEx = new RegExp(keyword, 'gi')
+      return cities.filter((place) => place.city.match(regEx) || place.state.match(regEx))
+    }
+
+    function displayMatches() {
+      const matchArray = findMatches(this.value, cities)
+      const listDom = matchArray.map((eachCity) => {
+        const regEx = new RegExp(this.value, 'gi')
+        const cityName = eachCity.city.replace(regEx, 
+        `<span class="highlight">${this.value}</span>`
+        )
+        const stateName = eachCity.state.replace(regEx, 
+        `<span class="highlight">${this.value}</span>`
+        )
+        return `
+          <li class="each-suggestion">
+            <span>${cityName}, ${stateName}</span>
+            <span class="population">Population: ${numberWithCommas(eachCity.population)}</span>
+          </li>
+        `
+      }).join('')
+      dropdown.innerHTML = listDom
+    }
+
+    search.addEventListener('change', displayMatches)
+    search.addEventListener('keyup', displayMatches)
+  </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+html, body {
+  margin: 0px;
+  padding: 0px;
+  font-size: 10px;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  font-family: 'helvetica neue';
+  font-weight: 200;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: linear-gradient(180deg, #ea9448, transparent);
+}
+
+form {
+  width: 300px;
+}
+
+.search {
+  height: 40px;
+  font-size: 2rem;
+  text-align: center;
+  width: calc(100% - 28px);
+  background-color: #efe5d9;
+  border: 4px solid #c5a482;
+  border-radius: 4px;
+  margin-top: 30px;
+  padding: 0px 10px;
+  outline: 0;
+}
+
+.suggestions {
+  display: inline-block;
+  width: 100%;
+  padding: 0px;
+}
+
+.each-suggestion {
+  font-size: 1.8rem;
+  background: #efe5d9;
+  border: 1px solid #c5a482;
+  padding: 10px;
+}
+
+.each-suggestion:nth-child(even) {
+  transform: perspective(50px) rotateX(3deg) translateY(2px);
+  list-style-type: none;
+}
+
+.each-suggestion:nth-child(odd) {
+  transform: perspective(50px) rotateX(-3deg) translateY(4.4px);
+  list-style-type: none;
+}
+
+.population {
+  display: inline-block;
+  width: 100%;
+  padding-top: 5px;
+  color: #666666;
+}
+
+.highlight {
+  background-color: #ea9448;
+}
