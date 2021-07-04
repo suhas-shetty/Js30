@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dev tools tricks</title>
+</head>
+<body>
+  <script>
+    //interpolated
+    console.log('Hello %s', 'world')
+
+    //styled
+    console.log('%cHello World', 'font-size: 30px; background: blue; color: #fff')
+
+    //warn
+    console.warn('Hello World')
+
+    //info
+    console.info('Hello World')
+
+    //error
+    console.error('Hello World')
+
+    //Testing
+    console.assert(1==2, 'one is not equal to 2')
+
+    //clear
+    console.clear()
+
+    //grouping
+    console.groupCollapsed('World')
+    console.log('Hello world')
+    console.log('Ciao world')
+    console.log('Hola world')
+    console.groupEnd('World')
+
+    //count
+
+    console.count('Hello')
+    console.count('Hola')
+    console.count('Hello')
+    console.count('Hello')
+    console.count('Hello')
+    console.count('Hi')
+    console.count('Hello')
+    console.count('Hello')
+    console.count('Ciao')
+    console.count('Hello')
+    console.count('Hello')
+
+    //timer
+    console.time('Fetching data')
+    fetch('https://api.github.com/users/wesbos')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('Fetching data')
+        console.log(data)
+      })
+
+    //table
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+    console.table(dogs)
+
+
+  </script>
+</body>
+</html>
