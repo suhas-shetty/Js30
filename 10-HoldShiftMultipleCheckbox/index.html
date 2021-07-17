@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulk select checkboxes</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div class="list">
+      <ul>
+        <li class="each-item">
+          <input type="checkbox" id="item1">
+          <label for="item1">Lot of items?</label>
+        </li>
+        <li class="each-item">
+          <input type="checkbox" id="item2">
+          <label for="item2">Do you want to check them in bulk</label>
+        </li>
+        <li class="each-item">
+          <input type="checkbox" id="item3">
+          <label for="item3">You can</label>
+        </li>
+        <li class="each-item">
+          <input type="checkbox" id="item4">
+          <label for="item4">Click on the item where you want to start</label>
+        </li>
+        <li class="each-item">
+          <input type="checkbox" id="item5">
+          <label for="item5">Hold the shift key</label>
+        </li>
+        <li class="each-item">
+          <input type="checkbox" id="item6">
+          <label for="item6">Click on the top of bottom item</label>
+        </li>
+        <li class="each-item">
+          <input type="checkbox" id="item7">
+          <label for="item7">Till where you want to bulk check</label>
+        </li>
+        <li class="each-item">
+          <input type="checkbox" id="item8">
+          <label for="item8">Voila!</label>
+        </li>
+        <li class="each-item">
+          <input type="checkbox" id="item9">
+          <label for="item9">I know it's cool</label>
+        </li>
+      </ul>
+    </div>
+    <script>
+      const checkboxList = document.querySelectorAll('.list > ul > li > input')
+      let prevCheckIndex
+      checkboxList.forEach((checkbox, index) => {
+        checkbox.addEventListener('click', function(event){
+          if(event.shiftKey && typeof prevCheckIndex !== 'undefined') {
+            let prevCheckValue = checkboxList[prevCheckIndex].checked
+            //we want the checked state before current event so !
+            let currCheckValue = !this.checked
+            var newCheckValue = prevCheckValue === currCheckValue ? !prevCheckValue : prevCheckValue;
+            for(let i=Math.min(prevCheckIndex, index); i <= Math.max(prevCheckIndex, index); i++) {
+              checkboxList[i].checked = newCheckValue;
+            }
+          }
+          prevCheckIndex = index
+        })
+      })
+    </script>
+  </body>
+</html>
